@@ -1,7 +1,8 @@
 <img src="terraform.jpg"><br>
 
+Course covering all features of Terraform v0.12, v0.13, v0.14, v0.15 and  v1.x
 # Terraform - From Zero to Certified Professional
-Course source code by Denis Astahov
+Course source code by Denis Astahov.
 
 ### Set AWS Credentials in Windows PowerShell:
 ```
