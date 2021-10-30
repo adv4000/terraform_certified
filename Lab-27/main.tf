@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------------
 #  Terraform - From Zero to Certified Professional
 #
-# Re-Create Resource
+# Re-Create Resource in Terraform up to v0.15.1
 #    1. terraform init
 #    2. terraform taint aws_instance.node2
 #    3. terraform plan
