@@ -9,9 +9,12 @@ provider "aws" {
   region = "eu-west-2"
 }
 
+resource "aws_default_vpc" "default" {} # This need to be added since AWS Provider v4.29+ to get VPC id
+
 resource "aws_security_group" "web" {
   name        = "Dynamic-Blocks-SG"
   description = "Security Group built by Dynamic Blocks"
+  vpc_id      = aws_default_vpc.default.id # This need to be added since AWS Provider v4.29+ to set VPC id
 
   dynamic "ingress" {
     for_each = ["80", "8080", "443", "1000", "8443"]
