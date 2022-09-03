@@ -11,6 +11,7 @@ provider "aws" {
 
 data "aws_region" "current" {}
 
+resource "aws_default_vpc" "default" {} # This need to be added since AWS Provider v4.29+ to get VPC id
 
 resource "aws_instance" "my_server" {
   ami                    = var.ami_id_per_region[data.aws_region.current.name]
@@ -37,7 +38,8 @@ resource "aws_instance" "my_server" {
 
 
 resource "aws_security_group" "my_server" {
-  name = "My Server Security Group"
+  name   = "My Server Security Group"
+  vpc_id = aws_default_vpc.default.id # This need to be added since AWS Provider v4.29+ to set VPC id
 
   dynamic "ingress" {
     for_each = lookup(var.allow_port, var.env, var.allow_port["rest"])
