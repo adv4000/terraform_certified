@@ -18,10 +18,11 @@ resource "aws_eip" "web" {
 }
 
 resource "aws_instance" "web" {
-  ami                    = "ami-07a0da1997b55b23e" // Amazon Linux2
-  instance_type          = "t3.micro"
-  vpc_security_group_ids = [aws_security_group.web.id]
-  user_data              = file("user_data.sh") // Static File
+  ami                         = "ami-07a0da1997b55b23e" // Amazon Linux2
+  instance_type               = "t3.micro"
+  vpc_security_group_ids      = [aws_security_group.web.id]
+  user_data                   = file("user_data.sh") // Static File
+  user_data_replace_on_change = true # Added in the new AWS provider!!!
   tags = {
     Name  = "WebServer Built by Terraform"
     Owner = "Denis Astahov"
