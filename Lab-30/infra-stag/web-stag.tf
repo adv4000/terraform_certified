@@ -1,3 +1,5 @@
+resource "aws_default_vpc" "default" {} # This need to be added since AWS Provider v4.29+ to get VPC id
+
 resource "aws_instance" "web-stag" {
   ami                    = data.aws_ami.latest_amazon_linux.id
   instance_type          = "t3.micro"
@@ -21,6 +23,7 @@ EOF
 resource "aws_security_group" "web-stag" {
   name        = "WebServer SG Stag"
   description = "My First SecurityGroup"
+  vpc_id      = aws_default_vpc.default.id # This need to be added since AWS Provider v4.29+ to set VPC id
 
   ingress {
     from_port   = 80
