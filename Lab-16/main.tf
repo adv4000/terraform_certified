@@ -45,6 +45,7 @@ resource "aws_vpc" "main" {
 }
 
 resource "aws_eip" "my_static_ip" {
+  vpc = true # Need to be added in new versions of AWS Provider
   tags = merge(var.tags, local.tags_for_eip, {
     Name        = "My EIP"
     Region_Info = local.Region_Info
