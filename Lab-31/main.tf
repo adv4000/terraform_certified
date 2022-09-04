@@ -78,9 +78,9 @@ resource "aws_security_group" "web" {
   }
 }
 
-resource "aws_eip" "ip1" {}
-resource "aws_eip" "ip2" {}
-resource "aws_eip" "ip3" {}
+resource "aws_eip" "ip1" { vpc = true } # Need to be added in new versions of AWS Provider
+resource "aws_eip" "ip2" { vpc = true } # Need to be added in new versions of AWS Provider
+resource "aws_eip" "ip3" { vpc = true } # Need to be added in new versions of AWS Provider
 
 #-----
 output "web_ip_address" {
