@@ -21,6 +21,7 @@ data "aws_ami" "latest_amazon_linux" {
 resource "aws_default_vpc" "default" {} # This need to be added since AWS Provider v4.29+ to get VPC id
 
 resource "aws_eip" "web" {
+  vpc      = true # Need to be added in new versions of AWS Provider
   instance = aws_instance.web.id
   tags     = merge(var.tags, { Name = "${var.tags["Environment"]}-EIP for WebServer Built by Terraform" })
 }
