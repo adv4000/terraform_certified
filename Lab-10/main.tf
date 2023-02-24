@@ -93,5 +93,5 @@ output "rds_password" {
 }
 
 output "rds_all" {
-  value = nonsensitive(jsondecode(data.aws_secretsmanager_version.rds.secret_string))
+  value = nonsensitive(jsondecode(data.aws_secretsmanager_secret_version.rds.secret_string))
 }
