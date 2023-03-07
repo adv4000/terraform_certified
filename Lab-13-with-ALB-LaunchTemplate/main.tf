@@ -94,7 +94,7 @@ resource "aws_autoscaling_group" "web" {
 
   dynamic "tag" {
     for_each = {
-      Name   = "WebServer in ASG"
+      Name   = "WebServer in ASG-v${aws_launch_template.web.latest_version}"
       TAGKEY = "TAGVALUE"
     }
     content {
