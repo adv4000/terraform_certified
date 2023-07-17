@@ -21,9 +21,9 @@ data "aws_ami" "latest_amazon_linux" {
 
 resource "aws_default_vpc" "default" {} # This need to be added since AWS Provider v4.29+ to get VPC id
 
-resource "aws_eip" "prod-ip1" { vpc = true } # Need to be added in new versions of AWS Provider
-resource "aws_eip" "prod-ip2" { vpc = true } # Need to be added in new versions of AWS Provider
+resource "aws_eip" "prod-ip1" { domain = "vpc" } # Need to be added in new versions of AWS Provider
+resource "aws_eip" "prod-ip2" { domain = "vpc" } # Need to be added in new versions of AWS Provider
 
-resource "aws_eip" "stag-ip1" { vpc = true } # Need to be added in new versions of AWS Provider
-resource "aws_eip" "stag-ip2" { vpc = true } # Need to be added in new versions of AWS Provider
-resource "aws_eip" "stag-ip3" { vpc = true } # Need to be added in new versions of AWS Provider
+resource "aws_eip" "stag-ip1" { domain = "vpc" } # Need to be added in new versions of AWS Provider
+resource "aws_eip" "stag-ip2" { domain = "vpc" } # Need to be added in new versions of AWS Provider
+resource "aws_eip" "stag-ip3" { domain = "vpc" } # Need to be added in new versions of AWS Provider
