@@ -60,7 +60,7 @@ resource "aws_security_group" "web" {
 }
 
 resource "aws_eip" "web" {
-  vpc      = true # Need to be added in new versions of AWS Provider
+  domain   = "vpc" # Need to be added in new versions of AWS Provider
   instance = aws_instance.web.id
   tags = {
     Name  = "${var.server_name}-WebServer-IP"
