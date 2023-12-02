@@ -13,10 +13,11 @@ provider "aws" {
 resource "aws_default_vpc" "default" {} # This need to be added since AWS Provider v4.29+ to get VPC id
 
 resource "aws_instance" "web" {
-  ami                    = "ami-0c9bfc21ac5bf10eb" // Amazon Linux2
-  instance_type          = "t3.micro"
-  vpc_security_group_ids = [aws_security_group.web.id]
-  user_data              = <<EOF
+  ami                         = "ami-0c9bfc21ac5bf10eb" // Amazon Linux2
+  instance_type               = "t3.micro"
+  vpc_security_group_ids      = [aws_security_group.web.id]
+  user_data_replace_on_change = true   # This need to added!!!! 
+  user_data                   = <<EOF
 #!/bin/bash
 yum -y update
 yum -y install httpd
