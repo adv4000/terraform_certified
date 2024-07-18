@@ -17,6 +17,7 @@ resource "aws_instance" "web" {
   instance_type          = "t3.micro"
   vpc_security_group_ids = [aws_security_group.web.id]
   user_data              = file("user_data.sh") // Static File
+  user_data_replace_on_change = true   # This need to be added!!!! 
   tags = {
     Name  = "WebServer Built by Terraform"
     Owner = "Denis Astahov"
