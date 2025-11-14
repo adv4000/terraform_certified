@@ -43,7 +43,7 @@ resource "aws_subnet" "subnet2" {
 
 
 output "region_name" {
-  value = data.aws_region.current.name
+  value = data.aws_region.current.region
 }
 
 output "region_description" {
